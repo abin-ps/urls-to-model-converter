@@ -135,10 +135,10 @@ class _UrlsToModelScreenState extends State<UrlsToModelScreen> {
     // print('[');
     for (Model c in catelogs) {
       output += '\nModel(\n';
-      output += '\t\tid: ${c.id},\n';
-      output += '\t\tname: ${c.name},\n';
-      output += '\t\tdescription: ${c.description},\n';
-      output += '\t\timageUrl: ${c.imageUrl},\n';
+      output += '\t\tid: \'${c.id}\',\n';
+      output += '\t\tname: \'${c.name}\',\n';
+      output += '\t\tdescription: \'${c.description}\',\n';
+      output += '\t\timageUrl: \'${c.imageUrl}\',\n';
       output += '\t),\n';
     }
     output += ']';
@@ -152,8 +152,8 @@ class _UrlsToModelScreenState extends State<UrlsToModelScreen> {
       String imageUrl = entry.value;
       List<String> parts = imageUrl.split('/');
       String lastPart = parts.last;
-      String name = lastPart.split('-').skip(2).join(' ').split('.').first;
-      String description = lastPart.split('.').first.replaceAll('-', ' ');
+      String name = lastPart.split('-').skip(2).join(' ').split('.').first.trim();
+      String description = lastPart.split('.').first.replaceAll('-', ' ').replaceAll('thumbnail', '').trim();
       return Model(
         id: '${index + 1}',
         name: name,
