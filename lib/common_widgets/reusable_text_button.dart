@@ -11,6 +11,7 @@ class ReusableTextButton extends StatelessWidget {
     this.borderRadius,
     required this.onTap,
     this.isLoading = false,
+    this.buttonTextStyle,
   });
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
@@ -20,11 +21,18 @@ class ReusableTextButton extends StatelessWidget {
   final BorderRadius? borderRadius;
   final void Function()? onTap;
   final bool isLoading;
+  final TextStyle? buttonTextStyle;
 
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(12);
     final buttonColor = Colors.green.shade200;
+
+    const buttonTextStyle = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+    );
     return InkWell(
       onTap: onTap,
       borderRadius: this.borderRadius ?? borderRadius,
@@ -49,6 +57,7 @@ class ReusableTextButton extends StatelessWidget {
               )
             : Text(
                 buttonText,
+                style: this.buttonTextStyle ?? buttonTextStyle,
                 overflow: TextOverflow.ellipsis,
               ),
       ),
